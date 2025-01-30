@@ -27,9 +27,19 @@ public class SingleList<E>{
         return tail.data;
     }
 
+    private void updateSize(int val){
+          size+=val;
+    }
+
     public void pushFront(E element){
-
-
-        // mohamed
+         SingleNode<E> newNode = new SingleNode<>(element); // create new Node;
+         updateSize(1);
+         if(head == null){
+             head = newNode;
+             tail = newNode;
+             return;
+         }
+         newNode.next = head;
+         head = newNode;
     }
 }
