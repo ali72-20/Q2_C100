@@ -42,4 +42,16 @@ public class SingleList<E>{
          newNode.next = head;
          head = newNode;
     }
+
+    public void popFront(){
+        SingleNode<E> deletedNode = head;
+        deletedNode.next = null;
+        deletedNode = null;
+        head = head.next;
+        updateSize(-1);
+    }
+
+    // pushBack()
+    // popBack()
+
 }
