@@ -15,10 +15,19 @@ public class SingleList<E>{
         return size == 0;
     }
 
-    // get size
+    public int getSize(){
+        return size;
+    }
 
     public E getHead(){
         return head.data;
     }
-    // get tail
+
+    public E getTail(){
+        return tail.data;
+    }
+
+    public void pushFront(E element){
+
+    }
 }
