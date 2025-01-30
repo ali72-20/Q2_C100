@@ -28,6 +28,5 @@ public class SingleList<E>{
     }
 
     public void pushFront(E element){
-
     }
 }
