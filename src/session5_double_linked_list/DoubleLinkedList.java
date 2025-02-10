@@ -128,6 +128,7 @@ public class DoubleLinkedList<E> {
         System.out.println(currentNode.data);
     }
 
+    // task
     // printBack()
     // get(int index)
 }
