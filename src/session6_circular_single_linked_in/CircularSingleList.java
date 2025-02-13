@@ -8,7 +8,6 @@ public class CircularSingleList<E> {
     public CircularSingleList() {
         head = null;
         tail = null;
-        tail.next = head;
         size = 0;
     }
 
@@ -76,4 +75,13 @@ public class CircularSingleList<E> {
     // task
     // popFront()
     // pushBack()
+
+    public void pushBack(E item) {
+        CircularSingleNode<E> newNode = new CircularSingleNode<>(item);
+        size++;
+        if (firstNodeHandler(newNode)) return;
+        tail.next = newNode;
+        tail = newNode;
+        setCircular();
+    }
 }
