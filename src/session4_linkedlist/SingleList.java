@@ -50,7 +50,6 @@ public class SingleList<E>{
         head = head.next;
         updateSize(-1);
     }
-
     // pushBack()
     // popBack()
 
