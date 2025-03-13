@@ -1,11 +1,11 @@
 package sorting_algo;
 
 public class SortingAlgo {
-    private SortingAlgo() {}
+    private SortingAlgo() {
+    }
+
     /**
-     *
      * @param a array need to sort in O(n^2) time
-     *
      */
     static public void bubbleSort(int[] a) {
         int n = a.length;
@@ -19,6 +19,7 @@ public class SortingAlgo {
             }
         }
     }
+
     static public void optimizedBubbleSort(int[] a) {
         int n = a.length;
         for (int i = 0; i < n; ++i) {
@@ -31,11 +32,12 @@ public class SortingAlgo {
                     isSorted = false;
                 }
             }
-            if(isSorted){
+            if (isSorted) {
                 break;
             }
         }
     }
+
     static public int numberOfInvertions(int[] a) {
         int n = a.length;
         int cnt = 0;
@@ -51,12 +53,13 @@ public class SortingAlgo {
         }
         return cnt;
     }
-    static public void selectionSort(int[] a){
+
+    static public void selectionSort(int[] a) {
         int n = a.length;
-        for(int i = 0;i < n; ++i){
+        for (int i = 0; i < n; ++i) {
             int mnIndex = i;
-            for(int j = i + 1; j < n; ++j){
-                if(a[j] < a[mnIndex]){
+            for (int j = i + 1; j < n; ++j) {
+                if (a[j] < a[mnIndex]) {
                     mnIndex = j;
                 }
             }
@@ -65,17 +68,62 @@ public class SortingAlgo {
             a[mnIndex] = temp;
         }
     }
+
     // O(n ^ 2)
-    static public void insertionSort(int[] a){
+    static public void insertionSort(int[] a) {
         int n = a.length;
-        for(int i = 1; i < n; ++i){
+        for (int i = 1; i < n; ++i) {
             int key = a[i];
             int j = i - 1;
-            while (j >= 0 && a[j] > key){
+            while (j >= 0 && a[j] > key) {
                 a[j + 1] = a[j];
                 j--;
             }
             a[j + 1] = key;
         }
+    }
+
+    static private void merge(int[] originalArr, int l, int mid, int r) {
+        int n1 = mid - l + 1;
+        int n2 = r - mid;
+        int[] arr1 = new int[n1];
+        int[] arr2 = new int[n2];
+        for (int i = 0; i < n1; ++i) {
+            arr1[i] = originalArr[l + i];
+        }
+        for(int i = 0;i < n2; ++i){
+            arr2[i] = originalArr[mid + 1 + i];
+        }
+        int pointer1 = 0,pointer2 = 0, k = l;
+        while (pointer1 < n1 && pointer2 < n2){
+            if(arr1[pointer1] <= arr2[pointer2]){
+                originalArr[k] = arr1[pointer1];
+                pointer1++;
+            }else{
+                originalArr[k] = arr2[pointer2];
+                pointer2++;
+            }
+            k++;
+        }
+        while (pointer1 < n1){
+            originalArr[k] = arr1[pointer1];
+            pointer1++;
+            k++;
+        }
+        while (pointer2 < n2) {
+            originalArr[k] = arr2[pointer2];
+            pointer2++;
+            k++;
+        }
+    }
+
+    static public void mergeSort(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = l + (r - l) / 2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid + 1, r);
+        merge(arr, l, mid, r);
     }
 }
