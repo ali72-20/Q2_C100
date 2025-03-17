@@ -1,5 +1,7 @@
 package sorting_algo;
 
+import java.util.Arrays;
+
 public class SortingAlgo {
     private SortingAlgo() {
     }
@@ -91,21 +93,21 @@ public class SortingAlgo {
         for (int i = 0; i < n1; ++i) {
             arr1[i] = originalArr[l + i];
         }
-        for(int i = 0;i < n2; ++i){
+        for (int i = 0; i < n2; ++i) {
             arr2[i] = originalArr[mid + 1 + i];
         }
-        int pointer1 = 0,pointer2 = 0, k = l;
-        while (pointer1 < n1 && pointer2 < n2){
-            if(arr1[pointer1] <= arr2[pointer2]){
+        int pointer1 = 0, pointer2 = 0, k = l;
+        while (pointer1 < n1 && pointer2 < n2) {
+            if (arr1[pointer1] <= arr2[pointer2]) {
                 originalArr[k] = arr1[pointer1];
                 pointer1++;
-            }else{
+            } else {
                 originalArr[k] = arr2[pointer2];
                 pointer2++;
             }
             k++;
         }
-        while (pointer1 < n1){
+        while (pointer1 < n1) {
             originalArr[k] = arr1[pointer1];
             pointer1++;
             k++;
@@ -125,5 +127,37 @@ public class SortingAlgo {
         mergeSort(arr, l, mid);
         mergeSort(arr, mid + 1, r);
         merge(arr, l, mid, r);
+    }
+
+    private static int getMaxNumber(int[] arr) {
+        int mx = arr[0];
+        for (int i = 1; i < arr.length; ++i) {
+            mx = Math.max(mx, arr[i]);
+        }
+        return mx;
+    }
+
+    // return array with freq of evert number in array a
+    private static int[] countNumber(int[] a, int maxNumber) {
+        int[] frq = new int[maxNumber + 1];
+        Arrays.fill(frq, 0);
+        for(int i = 0; i < a.length; ++i) {
+            int item = a[i];
+            frq[item]++;
+        }
+        return frq;
+    }
+    public static void countSort(int[] arr) {
+        int freqSize = getMaxNumber(arr) + 1;
+        int[] frq = countNumber(arr, freqSize); // O(size) --> 5 * 4 bytes = 20 bytes
+        int currentValidIndex = 0;
+        for(int i = 0; i < frq.length; ++i){
+            if(frq[i] == 0) continue;
+            while (frq[i] > 0){
+                arr[currentValidIndex] = i;
+                frq[i]--;
+                currentValidIndex++;
+            }
+        }
     }
 }
