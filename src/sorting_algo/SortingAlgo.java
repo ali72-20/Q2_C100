@@ -136,7 +136,7 @@ public class SortingAlgo {
         }
         return mx;
     }
-
+  // 10:45
     // return array with freq of evert number in array a
     private static int[] countNumber(int[] a, int maxNumber) {
         int[] frq = new int[maxNumber + 1];
