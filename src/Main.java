@@ -1,25 +1,34 @@
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; ++i) {
-            arr[i] = scanner.nextInt();
-        }
-        int target = scanner.nextInt();
-        boolean isFound = false;
-        for (int i = 0; i < n; ++i) {
-            if(arr[i] == target){
-                isFound = true;
-                break;
+    static boolean binarySearch(int[] a, int target){
+        int l = 0, r = a.length - 1;
+        while(l <= r){
+            int mid = l + (r - l) / 2;
+            if(a[mid] == target){
+                return true;
+            }else if(a[mid] < target){
+                l = mid + 1;
+            }else{
+                r = mid - 1;
             }
         }
-        if(isFound){
-            System.out.println("Target found");
-        }else{
-            System.out.println("Target not found");
+        return false;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int arrSize = scanner.nextInt();
+        int q = scanner.nextInt();
+        int[] arr = new int[arrSize];
+        for (int i = 0; i < arrSize; ++i) {
+            arr[i] = scanner.nextInt();
         }
-
+        for(int i = 0; i < q; ++i){
+            int target = scanner.nextInt();
+            if(binarySearch(arr,target)){
+                System.out.println("YES");
+            }else{
+                System.out.println("NO");
+            }
+        }
     }
 }
