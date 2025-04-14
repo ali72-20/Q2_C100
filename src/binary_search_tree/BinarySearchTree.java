@@ -1,9 +1,7 @@
 package binary_search_tree;
 
 public class BinarySearchTree {
-    private BinaryNode root;
-
-
+    public BinaryNode root;
     public BinarySearchTree(){
         root = null;
     }
@@ -28,7 +26,6 @@ public class BinarySearchTree {
         }
         BinaryNode currentNode = root;
         System.out.println("start from root");
-
         while(true){
             if(data > currentNode.data){
                 if(currentNode.right != null) {
@@ -52,8 +49,25 @@ public class BinarySearchTree {
         }
     }
 
-    public void recPush(int data){
-
+    public void recPush(int data,BinaryNode currentNode){
+        if(isEmpty()){
+            root = new BinaryNode(data);
+            return;
+        }
+        if(data > currentNode.data){
+            if(currentNode.right != null) {
+                recPush(data,currentNode.right);
+            }else{
+                currentNode.right = new BinaryNode(data);
+                return;
+            }
+        }else{
+            if(currentNode.left != null){
+                recPush(data, currentNode.left);
+            }else{
+                currentNode.left = new BinaryNode(data);
+                return;
+            }
+        }
     }
-
 }
