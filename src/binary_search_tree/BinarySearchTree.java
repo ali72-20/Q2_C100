@@ -18,6 +18,7 @@ public class BinarySearchTree {
     }
 
     public void iterativePush(int data){
+        if(contains(data)) return;
         BinaryNode newNode = new BinaryNode(data);
         if(isEmpty()){
             System.out.println("inserted in root");
@@ -50,6 +51,7 @@ public class BinarySearchTree {
     }
 
     public void recPush(int data,BinaryNode currentNode){
+        if(contains(data)) return;
         if(isEmpty()){
             root = new BinaryNode(data);
             return;
@@ -144,5 +146,35 @@ public class BinarySearchTree {
     }
     // delete leave
 
+    private boolean isLeaf(BinaryNode node){
+        return node.right == null && node.left == null;
+    }
+    public void remove(int target){
+        if(!contains(target)){
+            throw new RuntimeException("Key not found");
+        }
+        BinaryNode currentNode = root;
+        while (true){
+            if(target > currentNode.data && currentNode.right != null){
+                if(currentNode.right.data == target){
+                    if(isLeaf(currentNode.right)){
+                        currentNode.right = null;
+                        return;
+                    }
+                }else{
+                    currentNode = currentNode.right;
+                }
+            }else if(target < currentNode.data && currentNode.left != null){
+                if(currentNode.left.data == target){
+                    if(isLeaf(currentNode.left)){
+                        currentNode.left = null;
+                        return;
+                    }
+                }else{
+                    currentNode = currentNode.left;
+                }
+            }
+        }
+    }
 
 }
