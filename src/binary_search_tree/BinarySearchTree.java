@@ -129,12 +129,20 @@ public class BinarySearchTree {
         inOrder(currentNode.right);
     }
     // root,  left, right
-    public void preOrder(){
-
+    public void preOrder(BinaryNode currentNode){
+        if(currentNode == null) return;
+        System.out.print(currentNode.data + " ");
+        preOrder(currentNode.left);
+        preOrder(currentNode.right);
     }
     // left right root
-    public void postOrder(){
-
+    public void postOrder(BinaryNode currentNode){
+        if(currentNode == null) return;
+        postOrder(currentNode.left);
+        postOrder(currentNode.right);
+        System.out.print(currentNode.data + " ");
     }
+    // delete leave
+
 
 }
