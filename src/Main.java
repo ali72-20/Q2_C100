@@ -27,7 +27,8 @@ public class Main {
         System.out.println(binarySearchTree.containsRec(13,binarySearchTree.root,0));
         printLine();
         System.out.println(binarySearchTree.containsRec(14,binarySearchTree.root,0));
-
+        printLine();
+        binarySearchTree.inOrder(binarySearchTree.root);
     }
 
     private static void printLine() {

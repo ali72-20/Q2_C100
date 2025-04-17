@@ -121,4 +121,20 @@ public class BinarySearchTree {
         return containsRec(target,currentNode.left, 2);
     }
 
+    // left root right
+    public void inOrder(BinaryNode currentNode){
+        if(currentNode == null) return;
+        inOrder(currentNode.left);
+        System.out.print(currentNode.data  + " ");
+        inOrder(currentNode.right);
+    }
+    // root,  left, right
+    public void preOrder(){
+
+    }
+    // left right root
+    public void postOrder(){
+
+    }
+
 }
