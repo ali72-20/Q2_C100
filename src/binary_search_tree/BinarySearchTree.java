@@ -70,4 +70,55 @@ public class BinarySearchTree {
             }
         }
     }
+
+    public boolean contains(int target){
+        if(isEmpty()){
+            return false;
+        }
+        BinaryNode currentNode = root;
+        int dirc = 0;
+        while (currentNode != null){
+            if(dirc == 0){
+                System.out.println("In root");
+            }else if(dirc == 1){
+                System.out.println("In right");
+            }
+            else if(dirc == 2){
+                System.out.println("In left");
+            }
+            if(currentNode.data == target){
+                return true;
+            }
+            if(target > currentNode.data){
+                currentNode = currentNode.right;
+                dirc = 1;
+            }else{
+                currentNode = currentNode.left;
+                dirc = 2;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsRec(int target,BinaryNode currentNode, int dirc){
+        if(dirc == 0){
+            System.out.println("In root");
+        }else if(dirc == 1){
+            System.out.println("In right");
+        }
+        else if(dirc == 2){
+            System.out.println("In left");
+        }
+        if(currentNode == null){
+            return false;
+        }
+        if(currentNode.data == target){
+            return true;
+        }
+        if(target > currentNode.data){
+           return containsRec(target,currentNode.right,1);
+        }
+        return containsRec(target,currentNode.left, 2);
+    }
+
 }
