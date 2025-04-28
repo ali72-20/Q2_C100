@@ -1,10 +1,6 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
+import custom_set.CustomSet;
 public class Main {
     public static void main(String[] args) {
-        Set<Integer> st = new HashSet<>();
-
+        CustomSet set = new CustomSet();
     }
 }
