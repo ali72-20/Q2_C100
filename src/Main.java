@@ -1,6 +1,4 @@
-import solid.open_close.*;
-
-import java.util.Scanner;
+import solid.depndancy_inversions.*;
 
 public class Main {
     private static void showPaymentMenu() {
@@ -8,21 +6,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        showPaymentMenu();
-        int option = scanner.nextInt();
-        PaymentMethod paymentMethod = new CashPayment();
+        Repo repo = new Repo(new LocalDataBase2(), new RemoteDataBase2());
 
-        paymentMethod = switch (option) {
-            case 1 -> new CashPayment();
-            case 2 -> new CreditCardPayment();
-            case 3 -> new VodafoneCash();
-            case 4 -> new OrangeCash();
-            case 5 -> new Fawery();
-            default -> paymentMethod;
-        };
-
-        paymentMethod.pay();
     }
 }
 
