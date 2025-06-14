@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberTheoryHelper {
-    private NumberTheoryHelper() {
-    }
+    private NumberTheoryHelper() {}
 
     // O(n)
     public static List<Integer> findDivisors(int n) {
@@ -63,7 +62,7 @@ public class NumberTheoryHelper {
         return primeFactors;
     }
 
-
+    // O(sqrt(n))
     public static List<Pair<Integer,Integer>> primeFactorization (int n){
         List<Pair<Integer,Integer>> primeFactors = new ArrayList<>();
         for(int i = 2; i * i <= n; ++i){
@@ -82,10 +81,7 @@ public class NumberTheoryHelper {
         return primeFactors;
     }
 
-    // 1 2 3 4 5 6 10 12 15 20 30 60
-    // 2 ^ 1
-    // 2 ^ 2
-    // 2 ^ 1 * 3 ^ 1
-    // 2 ^ 1 * 5 ^ 1
+
+
 
 }
